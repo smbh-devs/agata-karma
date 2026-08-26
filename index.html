@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Contact — Profile</title>
+<meta name="description" content="Get in touch — send a message directly.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,600;1,6..72,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+  --bg-0:#0F0F0F;
+  --bg-1:#18191D;
+
+  --ink-0:#FFFFFF;
+  --ink-1:#B5B8BD;
+  --ink-2:#8A8D93;
+
+  --accent:#24A1DE;
+  --accent-2:#168AC4;
+
+  --line:rgba(255,255,255,0.10);
+  --glass:#1F2326;
+
+  --radius-card:20px;
+  --radius-btn:14px;
+}
+
+  *,*::before,*::after{box-sizing:border-box;}
+  html,body{height:100%;}
+  body{
+  margin:0;
+  min-height:100svh;
+
+  background:#0F0F0F;
+  color:#FFFFFF;
+
+  font-family:'Inter',system-ui,-apple-system,sans-serif;
+
+  display:flex;
+  align-items:flex-start;
+  justify-content:center;
+
+  padding:40px 16px 24px;
+
+  position:relative;
+  overflow-x:hidden;
+
+  -webkit-font-smoothing:antialiased;
+}
+
+
+  .field{
+  position:fixed;
+  inset:0;
+  z-index:0;
+  pointer-events:none;
+
+  background-image:url("333.png");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+  .doodles{
+    position:fixed;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+    opacity:0.7;
+    background-repeat:repeat;
+    background-size:170px 170px;
+    background-position:center;
+    -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 42%, transparent 42%, #000 88%);
+    mask-image:radial-gradient(ellipse 70% 55% at 50% 42%, transparent 42%, #000 88%);
+   
+  }
+
+ .card{
+  position:relative;
+  z-index:1;
+
+  width:100%;
+  max-width:360px;
+  min-height:420px;
+
+  padding:28px 22px;
+
+  background:#212121;
+
+  border:none;
+  border-radius:20px;
+
+  box-shadow:0 4px 24px rgba(0,0,0,0.4);
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+
+  animation:rise 0.6s cubic-bezier(.2,.8,.2,1) both;
+}
+  @keyframes rise{
+    from{opacity:0; transform:translateY(14px);}
+    to{opacity:1; transform:translateY(0);}
+  }
+
+  .avatar-wrap{
+  position:relative;
+  width:110px;
+  height:110px;
+  margin:0 auto 20px;
+  align-self:center;
+}
+  .avatar-ring,
+.status-dot{
+  display:none;
+}
+  @keyframes spin{ to{ transform:rotate(360deg); } }
+
+  .avatar{
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+  border:none;
+  outline:none;
+  background:transparent;
+}
+
+  .status-dot{
+    position:absolute;
+    bottom:4px;
+    right:4px;
+    width:14px;
+    height:14px;
+    border-radius:50%;
+    background:#4ddb8f;
+    border:3px solid var(--bg-1);
+  }
+
+  .eyebrow{
+    font-size:16px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--ink-2);
+    margin:0 0 8px;
+    font-weight:600;
+  }
+
+  .name{
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-style:normal;
+  font-size:24px;
+  font-weight:700;
+  line-height:28px;
+  margin:0;
+  padding:0;
+  color:#f4f4f5;
+  letter-spacing:-0.2px;
+}
+
+.username{
+  display:block;
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size:14px;
+  font-weight:400;
+  line-height:20px;
+  margin:2px 0 14px;
+  padding:0;
+  color:#8b9099;
+}
+
+.bio{
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+  font-size:16px !important;
+  font-weight:400 !important;
+  line-height:22px !important;
+  color:#FFFFFF !important;
+  text-align:center !important;
+  margin:0 0 0 0 !important;
+  padding:0 4px !important;
+  opacity:1 !important;
+}
+  .send-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:210px;
+  height:44px;
+  padding:0;
+
+  margin:28px auto 0;
+
+  font-family:Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size:14px;
+  font-weight:600;
+  line-height:1;
+
+  text-transform:uppercase;
+  letter-spacing:0.02em;
+
+  color:#FFFFFF;
+  background:#24A1DE;
+
+  border:none;
+  border-radius:22px;
+
+  cursor:pointer;
+
+  box-shadow:none;
+
+  transition:
+    transform 0.18s ease,
+    background 0.18s ease;
+}
+
+  border:none;{
+  border-radius:14px;
+  cursor:pointer;
+
+  box-shadow:0 8px 20px rgba(36,161,222,0.25);
+
+  transition:transform 0.18s ease,
+             box-shadow 0.18s ease,
+             filter 0.18s ease;
+}
+  .send-btn svg{
+    width:17px;
+    height:17px;
+    transition:transform 0.25s cubic-bezier(.2,.8,.2,1);
+  }
+  .send-btn:hover{
+  transform:translateY(-1px);
+  background:#2AABEE;
+}
+  .send-btn:hover svg{
+  transform:translateX(3px);}
+  .send-btn:active{
+  transform:scale(0.98);
+}
+  .send-btn:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:3px;
+  }
+
+  .hint{
+    margin:16px 0 0;
+    font-size:12px;
+    line-height:1.5;
+    color:var(--ink-2);
+  }
+  .hint b{ color:var(--ink-1); font-weight:600; }
+
+  @media (max-width:400px){
+    body{ padding:16px 12px; }
+    .card{ padding:30px 20px 22px; max-width:100%; }
+    .avatar, .avatar-wrap{ width:96px; height:96px; }
+    .name{ font-size:21px; }
+  }
+
+  @media (max-width:340px){
+    .avatar, .avatar-wrap{ width:84px; height:84px; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    .field::before,.field::after,.avatar-ring,.card{ animation:none !important; }
+    .send-btn, .send-btn svg{ transition:none !important; }
+
+  }
+</style>
+</head>
+<body>
+
+<div class="field" aria-hidden="true"></div>
+<div class="doodles" aria-hidden="true"></div>
+
+<main class="card" role="main">
+  <div class="avatar-wrap">
+    <img class="avatar" id="avatarImg" src="" alt="" />
+  </div>
+
+  <h1 class="name" id="nameEl"></h1>
+  <p class="username" id="usernameEl"></p>
+  <p class="bio" id="bioEl"></p>
+  
+  <button class="send-btn" id="sendBtn" type="button">
+    <span id="btnLabel">ОТПРАВИТЬ СООБЩЕНИ</span>
+   
+  </button>
+
+  <p class="hint" id="hintEl"></p>
+</main>
+
+<script>
+ 
+  const CONFIG = {
+    name: "✨Агата | Анализ кармы",
+    username: "@agata_karma",
+    bio: "✨ Более 8000 консультаций. Помогла более 2000 клиентам раскрыть свой потенциал,проработать кармические задачи и изменить жизнь к лучшему.",
+    avatarUrl: "123.jpg",         
+    telegramUrl: "https://t.me/m/Xzca9gsLMTQy",
+    buttonLabel: "Send Message"
+  };
+ 
+
+  document.getElementById('nameEl').textContent = CONFIG.name;
+  document.getElementById('usernameEl').textContent = CONFIG.username;
+  document.getElementById('btnLabel').textContent = CONFIG.buttonLabel;
+ document.getElementById('bioEl').textContent = CONFIG.bio;
+  const hintEl = document.getElementById('hintEl');
+
+
+  const avatarImg = document.getElementById('avatarImg');
+  avatarImg.alt = CONFIG.name + " profile photo";
+  avatarImg.src = CONFIG.avatarUrl;
+  avatarImg.onerror = function () {
+    
+    this.onerror = null;
+    this.src = "data:image/svg+xml;utf8," + encodeURIComponent(
+      `<svg xmlns='http://www.w3.org/2000/svg' width='132' height='132'>
+         <rect width='100%' height='100%' fill='#22242b'/>
+         <text x='50%' y='54%' font-family='sans-serif' font-size='48' fill='#8b7bff'
+               text-anchor='middle' dominant-baseline='middle'>${CONFIG.name.charAt(0)}</text>
+       </svg>`
+    );
+  };
+
+  document.getElementById('sendBtn').addEventListener('click', function () {
+    if (!CONFIG.telegramUrl) return;
+    window.open(CONFIG.telegramUrl, '_blank', 'noopener,noreferrer');
+  });
+</script>
+
+</body>
+</html>
+//by zaro
